@@ -1,2 +1,2 @@
 # SecretSanta2026
-A digital name-matching program so that everyone can get their secret santa recipient
+A digital name-matching program designed so that everyone can get their secret santa recipient. The program contains passwords so that no single receiver can access any other receiver's match. The code uses 'streamlit' to deploy the algorithm to the cloud, so that every member of the group can run the program in their browser and not need to have any programming languages installed on their device.
