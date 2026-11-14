@@ -25,15 +25,24 @@ PASSWORDS = {
 PARTICIPANTS = list(PASSWORDS.keys())
 CSV_FILE = "secret_santa_matches.csv"
 
-
+# Securely load credentials and diagnose issues
 try:
+    if "GITHUB_TOKEN" not in st.secrets:
+        st.error("🔑 Missing 'GITHUB_TOKEN' in Streamlit Secrets!")
+        st.stop()
+    if "GITHUB_REPO" not in st.secrets:
+        st.error("📂 Missing 'GITHUB_REPO' in Streamlit Secrets!")
+        st.stop()
+
     GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
-    GITHUB_REPO = st.secrets["GITHUB_REPO"]
-    BRANCH = st.secrets.get("GITHUB_BRANCH", "main")  
+    GITHUB_REPO = st.secrets["GITHUB_REPO"] 
+    BRANCH = st.secrets.get("GITHUB_BRANCH", "main")
+    
     g = Github(GITHUB_TOKEN)
     repo = g.get_repo(GITHUB_REPO)
 except Exception as e:
-    st.error("GitHub configuration is missing in Streamlit Secrets. Please check your setup.")
+    st.error(f"❌ Configuration error: {str(e)}")
+    st.info("Double-check that your secrets are correctly configured under Settings > Secrets on Streamlit Cloud.")
     st.stop()
 
 def load_matches_from_github():
