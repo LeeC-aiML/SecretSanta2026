@@ -20,7 +20,8 @@ PASSWORDS = {
     "Nia":"ni12nw",
     "Michael":"mi81mc",
     "John":"jo82jc",
-    "Aunt Stacy":"as15sc"
+    "Aunt Stacy":"as15sc",
+    "Riley":"ri12rc"
     }
 PARTICIPANTS = list(PASSWORDS.keys())
 CSV_FILE = "secret_santa_matches.csv"
