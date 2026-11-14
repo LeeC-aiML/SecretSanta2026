@@ -24,12 +24,12 @@ PASSWORDS = {
     }
 PARTICIPANTS = list(PASSWORDS.keys())
 CSV_FILE = "secret_santa_matches.csv"
-BRANCH = "main"
 
 
 try:
     GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
-    GITHUB_REPO = st.secrets["GITHUB_REPO"]  
+    GITHUB_REPO = st.secrets["GITHUB_REPO"]
+    BRANCH = st.secrets.get("GITHUB_BRANCH", "main")  
     g = Github(GITHUB_TOKEN)
     repo = g.get_repo(GITHUB_REPO)
 except Exception as e:
